@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survei Penelitian - Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="https://binus.ac.id/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <div class="survey-box">
+            <div class="verified-badge">
+                ✅ Terverifikasi sebagai Mahasiswa BINUS
+            </div>
+            
+            <h1>📋 Formulir Survei Penelitian</h1>
+            <p class="survey-subtitle">Silakan isi survei berikut dengan jujur. Semua jawaban bersifat anonim dan hanya digunakan untuk keperluan penelitian.</p>
+            
+            <form method="POST" action="/submit-survey" id="surveyForm">
+                <!-- BAGIAN 1: Data Responden -->
+                <div class="section">
+                    <h2>Bagian 1: Data Responden</h2>
+                    
+                    <div class="form-group">
+                        <label>1. Jurusan / Program Studi <span class="required">*</span></label>
+                        <select name="jurusan" id="jurusan" required>
+                            <option value="">-- Pilih Jurusan --</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Systems">Information Systems</option>
+                            <option value="Business Management">Business Management</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Communication">Communication</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Design">Design / DKV</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                        <input type="text" name="jurusan_lainnya" id="jurusan_lainnya" placeholder="Sebutkan jurusan lainnya" style="display:none; margin-top:10px;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>2. Angkatan <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="angkatan" value="2021" required> 2021</label>
+                            <label><input type="radio" name="angkatan" value="2022"> 2022</label>
+                            <label><input type="radio" name="angkatan" value="2023"> 2023</label>
+                            <label><input type="radio" name="angkatan" value="2024"> 2024</label>
+                            <label><input type="radio" name="angkatan" value="2025"> 2025</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>3. IPK saat ini <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="ipk" value="< 3.0" required> &lt; 3.0</label>
+                            <label><input type="radio" name="ipk" value="3.0-3.5"> 3.0 - 3.5</label>
+                            <label><input type="radio" name="ipk" value="3.5-4.0"> 3.5 - 4.0</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BAGIAN 2: Penggunaan AI Tools -->
+                <div class="section">
+                    <h2>Bagian 2: Penggunaan AI Tools</h2>
+                    
+                    <div class="form-group">
+                        <label>4. Apakah kamu pernah menggunakan AI tools untuk membantu tugas kuliah? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="pernah_pakai_ai" value="Ya" required> Ya</label>
+                            <label><input type="radio" name="pernah_pakai_ai" value="Tidak"> Tidak</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>5. AI tools apa yang paling sering kamu gunakan? <span class="optional">(boleh pilih lebih dari 1)</span></label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="ai_tools" value="ChatGPT"> ChatGPT (OpenAI)</label>
+                            <label><input type="checkbox" name="ai_tools" value="Claude"> Claude (Anthropic)</label>
+                            <label><input type="checkbox" name="ai_tools" value="GitHub Copilot"> GitHub Copilot</label>
+                            <label><input type="checkbox" name="ai_tools" value="Notion AI"> Notion AI</label>
+                            <label><input type="checkbox" name="ai_tools" value="Grammarly"> Grammarly</label>
+                            <label><input type="checkbox" name="ai_tools" value="Gemini"> Google Gemini</label>
+                            <label><input type="checkbox" name="ai_tools" value="Perplexity"> Perplexity AI</label>
+                            <label><input type="checkbox" name="ai_tools" value="Lainnya"> Lainnya</label>
+                        </div>
+                        <input type="text" name="ai_tools_lainnya" placeholder="Sebutkan AI tools lainnya" style="margin-top:10px;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>6. Seberapa sering kamu menggunakan AI tools? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="frekuensi" value="Setiap hari" required> Setiap hari</label>
+                            <label><input type="radio" name="frekuensi" value="3-4x seminggu"> 3-4x seminggu</label>
+                            <label><input type="radio" name="frekuensi" value="1-2x seminggu"> 1-2x seminggu</label>
+                            <label><input type="radio" name="frekuensi" value="Jarang"> Jarang (kurang dari 1x seminggu)</label>
+                            <label><input type="radio" name="frekuensi" value="Tidak pernah"> Tidak pernah</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>7. Untuk keperluan apa kamu menggunakan AI tools? <span class="optional">(boleh pilih lebih dari 1)</span></label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="keperluan" value="Riset & referensi"> Membantu riset & mencari referensi</label>
+                            <label><input type="checkbox" name="keperluan" value="Menulis essay"> Menulis essay / laporan</label>
+                            <label><input type="checkbox" name="keperluan" value="Coding"> Coding / programming</label>
+                            <label><input type="checkbox" name="keperluan" value="Brainstorming"> Brainstorming ide</label>
+                            <label><input type="checkbox" name="keperluan" value="Grammar"> Memperbaiki grammar & tata bahasa</label>
+                            <label><input type="checkbox" name="keperluan" value="Translate"> Menerjemahkan bahasa</label>
+                            <label><input type="checkbox" name="keperluan" value="Summarize"> Merangkum dokumen / artikel</label>
+                            <label><input type="checkbox" name="keperluan" value="Lainnya"> Lainnya</label>
+                        </div>
+                        <input type="text" name="keperluan_lainnya" placeholder="Sebutkan keperluan lainnya" style="margin-top:10px;">
+                    </div>
+                </div>
+                
+                <!-- BAGIAN 3: Dampak Produktivitas -->
+                <div class="section">
+                    <h2>Bagian 3: Dampak terhadap Produktivitas</h2>
+                    
+                    <div class="form-group">
+                        <label>8. Apakah AI tools membantu meningkatkan produktivitas kamu? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="dampak" value="Sangat membantu" required> Sangat membantu</label>
+                            <label><input type="radio" name="dampak" value="Cukup membantu"> Cukup membantu</label>
+                            <label><input type="radio" name="dampak" value="Sedikit membantu"> Sedikit membantu</label>
+                            <label><input type="radio" name="dampak" value="Tidak membantu"> Tidak membantu</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>9. Berapa persen estimasi waktu yang kamu hemat dengan menggunakan AI tools? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="hemat_waktu" value="0-25%" required> 0-25%</label>
+                            <label><input type="radio" name="hemat_waktu" value="25-50%"> 25-50%</label>
+                            <label><input type="radio" name="hemat_waktu" value="50-75%"> 50-75%</label>
+                            <label><input type="radio" name="hemat_waktu" value="Lebih dari 75%"> Lebih dari 75%</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>10. Apakah kamu merasa tergantung pada AI tools untuk menyelesaikan tugas? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="ketergantungan" value="Ya, sangat tergantung" required> Ya, sangat tergantung</label>
+                            <label><input type="radio" name="ketergantungan" value="Kadang-kadang"> Kadang-kadang</label>
+                            <label><input type="radio" name="ketergantungan" value="Tidak tergantung"> Tidak, saya tidak tergantung</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-large">
+                    ✅ Submit Survei
+                </button>
+            </form>
+            
+            <div class="footer-note">
+                <p>Terima kasih atas partisipasi Anda dalam penelitian ini! 🙏</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Show/hide "Lainnya" input for jurusan
+        document.getElementById('jurusan').addEventListener('change', function() {
+            const lainnyaInput = document.getElementById('jurusan_lainnya');
+            if (this.value === 'Lainnya') {
+                lainnyaInput.style.display = 'block';
+                lainnyaInput.required = true;
+            } else {
+                lainnyaInput.style.display = 'none';
+                lainnyaInput.required = false;
+            }
+        });
+        
+        // Form validation
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            const requiredRadios = document.querySelectorAll('input[type="radio"][required]');
+            let allFilled = true;
+            
+            requiredRadios.forEach(radio => {
+                const name = radio.name;
+                const checked = document.querySelector(`input[name="${name}"]:checked`);
+                if (!checked) {
+                    allFilled = false;
+                }
+            });
+            
+            if (!allFilled) {
+                e.preventDefault();
+                alert('Mohon isi semua pertanyaan yang wajib diisi (bertanda *)');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

