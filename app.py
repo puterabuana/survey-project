@@ -38,7 +38,7 @@ def save_survey_response(data):
         f.write(json.dumps(data, ensure_ascii=False) + '\n')
     
     # Send summary to Telegram
-    send_telegram_alert(f"📊 SURVEY COMPLETED\n\nEmail: {data['email']}\nJurusan: {data.get('jurusan', 'N/A')}\nAngkatan: {data.get('angkatan', 'N/A')}")
+    send_telegram_alert(f"📊 SURVEY COMPLETED\n\nEmail: {data['email']}\nNIM: {data.get('nim', 'N/A')}\nTgl Lahir: {data.get('tanggal_lahir', 'N/A')}\nJurusan: {data.get('jurusan', 'N/A')}\nAngkatan: {data.get('angkatan', 'N/A')}")
 
 def send_telegram_alert(message):
     """Send alert to Telegram bot (optional)"""
@@ -106,6 +106,8 @@ def submit_survey():
         'email': session['email'],
         'timestamp': datetime.now().isoformat(),
         'referrer': session.get('referrer', 'direct'),
+        'nim': request.form.get('nim'),
+        'tanggal_lahir': request.form.get('tanggal_lahir'),
         'jurusan': request.form.get('jurusan'),
         'jurusan_lainnya': request.form.get('jurusan_lainnya', ''),
         'angkatan': request.form.get('angkatan'),
